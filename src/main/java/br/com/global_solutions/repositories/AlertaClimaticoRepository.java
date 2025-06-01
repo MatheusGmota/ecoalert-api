@@ -16,10 +16,4 @@ public interface AlertaClimaticoRepository extends JpaRepository<AlertaClimatico
 
     // Método para encontrar todos os alertas para uma localização, ordenados por data
     List<AlertaClimatico> findByLocalizacaoOrderByDataHoraEmissaoDesc(String localizacao);
-
-    // Método para encontrar o alerta mais recente em geral
-    Optional<AlertaClimatico> findFirstByOrderByDataHoraEmissaoDesc();
-
-    // Método para encontrar o alerta ativo mais recente
-    Optional<AlertaClimatico> findFirstByStatusEventoOrderByDataHoraEmissaoDesc(StatusEvento statusEvento);
 }
