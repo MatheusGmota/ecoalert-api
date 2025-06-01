@@ -12,23 +12,20 @@ public class LimiarClimatico {
     @Column(name = "id_limiar")
     private Long id;
 
-    @Column(name = "parametro_sensor")
+    @Column(name = "parametro_sensor", nullable = false)
     private String parametroSensor;
 
-    @Column(name = "valor_max")
+    @Column(name = "valor_max", nullable = false)
     private Double valorMax;
 
-    @Column(name = "valor_min")
+    @Column(name = "valor_min", nullable = false)
     private Double valorMin;
 
     @Column(name = "msg_max")
-    private Double msgMax;
+    private String msgMax;
 
     @Column(name = "msg_min")
-    private Double msgMin;
-
-    @Column(name = "mensagem_alerta")
-    private String mensagemAlerta;
+    private String msgMin;
 
     @Column(name = "recomendacao_alerta")
     private String recomendacaoAlerta;
@@ -36,13 +33,12 @@ public class LimiarClimatico {
     public LimiarClimatico() {
     }
 
-    public LimiarClimatico(String parametroSensor, Double valorMax, Double valorMin, Double msgMax, Double msgMin, String mensagemAlerta, String recomendacaoAlerta) {
+    public LimiarClimatico(String parametroSensor, Double valorMax, Double valorMin, String msgMax, String msgMin, String recomendacaoAlerta) {
         this.parametroSensor = parametroSensor;
         this.valorMax = valorMax;
         this.valorMin = valorMin;
         this.msgMax = msgMax;
         this.msgMin = msgMin;
-        this.mensagemAlerta = mensagemAlerta;
         this.recomendacaoAlerta = recomendacaoAlerta;
     }
 
@@ -78,30 +74,22 @@ public class LimiarClimatico {
         this.valorMin = valorMin;
     }
 
-    public Double getMsgMax() {
+    public String getMsgMax() {
         return msgMax;
     }
 
-    public void setMsgMax(Double msgMax) {
+    public void setMsgMax(String msgMax) {
         this.msgMax = msgMax;
     }
 
-    public Double getMsgMin() {
+    public String getMsgMin() {
         return msgMin;
     }
 
-    public void setMsgMin(Double msgMin) {
+    public void setMsgMin(String msgMin) {
         this.msgMin = msgMin;
     }
-
-    public String getMensagemAlerta() {
-        return mensagemAlerta;
-    }
-
-    public void setMensagemAlerta(String mensagemAlerta) {
-        this.mensagemAlerta = mensagemAlerta;
-    }
-
+    
     public String getRecomendacaoAlerta() {
         return recomendacaoAlerta;
     }
