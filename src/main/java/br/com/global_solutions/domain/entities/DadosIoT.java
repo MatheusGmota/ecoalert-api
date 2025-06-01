@@ -1,5 +1,6 @@
 package br.com.global_solutions.domain.entities;
 
+import br.com.global_solutions.dto.DadosIoTRequest;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -40,6 +41,16 @@ public class DadosIoT {
     private LocalDateTime dataHora;
 
     public DadosIoT() {
+    }
+    // Construtor para facilitar instaciamento a partir do DTO
+    public DadosIoT(DadosIoTRequest dto) {
+        this.temperatura = dto.getTemperatura();
+        this.umidade = dto.getUmidade();
+        this.nivelAguaCm = dto.getNivelAguaCm();
+        this.porcentagemNivel = dto.getPorcentagemNivel();
+        this.localizacao = dto.getLocalizacao();
+        this.latitude = dto.getLatitude();
+        this.longitude = dto.getLongitude();
     }
 
     public DadosIoT(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, String localizacao, String latitude, String longitude,LocalDateTime dataHora) {
