@@ -29,10 +29,10 @@ public class AlertaClimatico {
     private String localizacao;
 
     @Column(name = "latitude")
-    private Double latitude;
+    private String latitude;
 
     @Column(name = "longitude")
-    private Double longitude;
+    private String longitude;
 
     @Column(name = "mensagem")
     private String mensagem;
@@ -50,7 +50,7 @@ public class AlertaClimatico {
 
     public AlertaClimatico() {}
 
-    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, String localizacao, Double latitude, Double longitude, String mensagem, String recomendacoes) {
+    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, String localizacao, String latitude, String longitude, String mensagem, String recomendacoes) {
         this.tipoEvento = tipoEvento;
         this.gravidade = gravidade;
         this.localizacao = localizacao;
@@ -92,19 +92,19 @@ public class AlertaClimatico {
         this.localizacao = localizacao;
     }
 
-    public Double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
