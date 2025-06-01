@@ -2,7 +2,7 @@ package br.com.global_solutions.domain.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TB_DADOS_IOT")
@@ -37,12 +37,12 @@ public class DadosIoT {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_hora")
-    private Date dataHora;
+    private LocalDateTime dataHora;
 
     public DadosIoT() {
     }
 
-    public DadosIoT(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, String localizacao, String latitude, String longitude,Date dataHora) {
+    public DadosIoT(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, String localizacao, String latitude, String longitude,LocalDateTime dataHora) {
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.nivelAguaCm = nivelAguaCm;
@@ -117,11 +117,11 @@ public class DadosIoT {
         this.longitude = longitude;
     }
 
-    public Date getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 }

@@ -50,7 +50,7 @@ public class AlertaClimatico {
 
     public AlertaClimatico() {}
 
-    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, String localizacao, Double latitude, Double longitude, String mensagem, String recomendacoestipo) {
+    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, String localizacao, Double latitude, Double longitude, String mensagem, String recomendacoes) {
         this.tipoEvento = tipoEvento;
         this.gravidade = gravidade;
         this.localizacao = localizacao;
