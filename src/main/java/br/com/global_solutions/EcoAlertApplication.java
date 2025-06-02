@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GlobalSolutionsApplication {
+public class EcoAlertApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GlobalSolutionsApplication.class, args);
+		SpringApplication.run(EcoAlertApplication.class, args);
 	}
 
 }
