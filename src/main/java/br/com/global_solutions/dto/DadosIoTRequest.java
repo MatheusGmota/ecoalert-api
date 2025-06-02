@@ -27,6 +27,7 @@ public class DadosIoTRequest {
     private String latitude;
 
     @NotBlank(message = "O campo longitude é obrigatório.")
+    @Size(min = 8, max = 10, message = "O campo localização tem que ter 10 caracteres.")
     private String longitude;
 
     public DadosIoTRequest() {}
