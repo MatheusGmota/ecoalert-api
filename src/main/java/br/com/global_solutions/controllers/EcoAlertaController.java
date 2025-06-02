@@ -19,16 +19,24 @@ public class EcoAlertaController {
 
     @GetMapping("/status-climatico")
     public ResponseEntity<Object> obterStatusClimatico(@RequestParam String localizacao) {
-        StatusClimatico statusClimatico = service.obterStatusClimatico(localizacao);
-        if (statusClimatico != null) return ResponseEntity.ok(statusClimatico);
-        else return ResponseEntity.badRequest().body(null);
+        try {
+            StatusClimatico statusClimatico = service.obterStatusClimatico(localizacao);
+            if (statusClimatico != null) return ResponseEntity.ok(statusClimatico);
+            else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum status para essa localização");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/alerta")
     public ResponseEntity<Object> obterAlertaClimatico(@RequestParam String localizacao) {
-        AlertaClimatico alertaClimatico = service.obterAlertaClimatico(localizacao);
-        if (alertaClimatico != null) return ResponseEntity.ok(alertaClimatico);
-        else return ResponseEntity.badRequest().body(null);
+        try {
+            AlertaClimatico alertaClimatico = service.obterAlertaClimatico(localizacao);
+            if (alertaClimatico != null) return ResponseEntity.ok(alertaClimatico);
+            else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum alerta.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/dados-climaticos")
