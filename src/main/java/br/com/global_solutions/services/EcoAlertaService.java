@@ -21,6 +21,8 @@ import java.util.List;
 @Service
 public class EcoAlertaService {
 
+    public List<LimiarClimatico> limiares;
+
     @Autowired
     private DadosIoTRepository dadosIoTRepository;
 
@@ -34,6 +36,7 @@ public class EcoAlertaService {
     private LimiarClimaticoRepository limiarClimaticoRepository;
 
     public void processarDados(DadosIoTRequest request) {
+        this.limiares = limiarClimaticoRepository.findAll();
         DadosIoT dadosIoT = new DadosIoT(request);
         dadosIoT.setDataHora(LocalDateTime.now());
         dadosIoTRepository.save(dadosIoT);
@@ -47,9 +50,9 @@ public class EcoAlertaService {
         statusClimatico.setUmidade(dadosIoT.getUmidade());
         statusClimatico.setLocalizacao(dadosIoT.getLocalizacao());
 
-        statusClimaticoRepository.save(statusClimatico);
-
         verificarAlertas(dadosIoT);
+
+        statusClimaticoRepository.save(statusClimatico);
     }
 
     public AlertaClimatico obterAlertaClimatico(String localizacao) {
@@ -61,14 +64,12 @@ public class EcoAlertaService {
     }
 
     private void verificarAlertas(DadosIoT dadosIoT) {
-        List<LimiarClimatico> limiares = limiarClimaticoRepository.findAll();
-
         for (LimiarClimatico limiar : limiares) {
             double valorSensor = obterValorSensor(dadosIoT, limiar.getParametroSensor());
 
             TipoEvento tipoEvento = mapearTipoEvento(limiar.getParametroSensor());
 
-            if (valorSensor < limiar.getValorMin()) {
+            if (valorSensor <= limiar.getValorMin()) {
                 AlertaClimatico alertaMin = new AlertaClimatico();
                 alertaMin.setDataHoraEmissao(LocalDateTime.now());
                 alertaMin.setGravidade(Gravidade.ALTA);
