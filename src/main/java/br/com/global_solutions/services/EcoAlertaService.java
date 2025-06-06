@@ -63,6 +63,10 @@ public class EcoAlertaService {
         return statusClimaticoRepository.findFirstByLocalizacaoOrderByDataHoraAtualizacaoDesc(localizacao).orElse(null);
     }
 
+    public List<AlertaClimatico> obterHistoricoAlerta(String localizacao) {
+        return alertaClimaticoRepository.findByLocalizacaoOrderByDataHoraEmissaoDesc(localizacao);
+    }
+
     private void verificarAlertas(DadosIoT dadosIoT) {
         for (LimiarClimatico limiar : limiares) {
             double valorSensor = obterValorSensor(dadosIoT, limiar.getParametroSensor());

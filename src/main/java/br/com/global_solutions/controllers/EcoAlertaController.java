@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
@@ -33,6 +35,17 @@ public class EcoAlertaController {
         try {
             AlertaClimatico alertaClimatico = service.obterAlertaClimatico(localizacao);
             if (alertaClimatico != null) return ResponseEntity.ok(alertaClimatico);
+            else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum alerta.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/alerta/historico")
+    public ResponseEntity<Object> obterHistoricoAlerta(@RequestParam String localizacao) {
+        try {
+            List<AlertaClimatico> alertaClimaticos = service.obterHistoricoAlerta(localizacao);
+            if (alertaClimaticos != null) return ResponseEntity.ok(alertaClimaticos);
             else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum alerta.");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
