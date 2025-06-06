@@ -71,9 +71,8 @@ public class EcoAlertaService {
         for (LimiarClimatico limiar : limiares) {
             double valorSensor = obterValorSensor(dadosIoT, limiar.getParametroSensor());
 
-            TipoEvento tipoEvento = mapearTipoEvento(limiar.getParametroSensor());
-
             if (valorSensor <= limiar.getValorMin()) {
+                TipoEvento tipoEvento = mapearTipoEvento(false, limiar.getParametroSensor());
                 AlertaClimatico alertaMin = new AlertaClimatico();
                 alertaMin.setDataHoraEmissao(LocalDateTime.now());
                 alertaMin.setGravidade(Gravidade.ALTA);
@@ -86,7 +85,8 @@ public class EcoAlertaService {
                 alertaMin.setTipoEvento(tipoEvento);
                 alertaClimaticoRepository.save(alertaMin);
 
-            } else if (valorSensor > limiar.getValorMax()) {
+            } else if (valorSensor >= limiar.getValorMax()) {
+                TipoEvento tipoEvento = mapearTipoEvento(true, limiar.getParametroSensor());
                 AlertaClimatico alertaMax = new AlertaClimatico();
                 alertaMax.setDataHoraEmissao(LocalDateTime.now());
                 alertaMax.setGravidade(Gravidade.ALTA);
@@ -102,10 +102,10 @@ public class EcoAlertaService {
         }
     }
 
-    private TipoEvento mapearTipoEvento(String parametroSensor) {
+    private TipoEvento mapearTipoEvento(boolean max, String parametroSensor) {
         return switch (parametroSensor.toLowerCase()) {
-            case "umidade" -> TipoEvento.BAIXA_UMIDADE;
-            case "temperatura" -> TipoEvento.ONDA_CALOR;
+            case "umidade" -> (max) ? TipoEvento.ALTA_UMIDADE : TipoEvento.BAIXA_UMIDADE;
+            case "temperatura" -> (max) ? TipoEvento.ONDA_CALOR : TipoEvento.FRIO_EXTREMO;
             case "nivelagua" -> TipoEvento.INUNDACAO_CRITICA;
             case "porcentagemnivel" -> TipoEvento.PRE_INUNDACAO;
             case "vento" -> TipoEvento.VENTO_FORTE;
