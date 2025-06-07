@@ -2,8 +2,7 @@ package br.com.ecoalert.domain.enums;
 
 public enum StatusEvento {
     ATIVO("Ativo"),
-    ENCERRADO("Encerrado"),
-    EM_OBSERVACAO("Em Observação");
+    INATIVO("Inativo");
 
     private final String descricao;
 

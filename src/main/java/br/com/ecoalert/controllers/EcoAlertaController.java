@@ -2,10 +2,13 @@ package br.com.ecoalert.controllers;
 
 import br.com.ecoalert.domain.entities.AlertaClimatico;
 import br.com.ecoalert.domain.entities.StatusClimatico;
+import br.com.ecoalert.dto.AlertaClimaticoResponse;
 import br.com.ecoalert.dto.DadosIoTRequest;
+import br.com.ecoalert.dto.StatusClimaticoResponse;
 import br.com.ecoalert.services.EcoAlertaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +25,7 @@ public class EcoAlertaController {
     @GetMapping("/status-climatico")
     public ResponseEntity<Object> obterStatusClimatico(@RequestParam String localizacao) {
         try {
-            StatusClimatico statusClimatico = service.obterStatusClimatico(localizacao);
+            StatusClimaticoResponse statusClimatico = service.obterStatusClimatico(localizacao);
             if (statusClimatico != null) return ResponseEntity.ok(statusClimatico);
             else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum status para essa localização");
         } catch (Exception e) {
@@ -33,7 +36,7 @@ public class EcoAlertaController {
     @GetMapping("/alerta")
     public ResponseEntity<Object> obterAlertaClimatico(@RequestParam String localizacao) {
         try {
-            AlertaClimatico alertaClimatico = service.obterAlertaClimatico(localizacao);
+            AlertaClimaticoResponse alertaClimatico = service.obterAlertaClimatico(localizacao);
             if (alertaClimatico != null) return ResponseEntity.ok(alertaClimatico);
             else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum alerta.");
         } catch (Exception e) {
@@ -47,8 +50,12 @@ public class EcoAlertaController {
             List<AlertaClimatico> alertaClimaticos = service.obterHistoricoAlerta(localizacao);
             if (alertaClimaticos != null) return ResponseEntity.ok(alertaClimaticos);
             else return ResponseEntity.status(404).body("Não foi possivel encontrar nenhum alerta.");
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro interno ao buscar histórico de alertas: " + e.getMessage());
         }
     }
 
@@ -56,9 +63,13 @@ public class EcoAlertaController {
     public ResponseEntity<Object> receberDadosIoT(@Valid @RequestBody DadosIoTRequest dados) {
         try {
             service.processarDados(dados);
-            return ResponseEntity.status(201).body(dados);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Dados processados com sucesso.");
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao processar dados: " + e.getMessage());
+
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Não foi possível processar os dados.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro interno ao processar dados IoT: " + e.getMessage());
         }
     }
 

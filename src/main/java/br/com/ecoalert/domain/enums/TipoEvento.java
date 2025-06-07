@@ -10,7 +10,8 @@ public enum TipoEvento {
     BAIXA_UMIDADE("Baixa Umidade"),
     ALTA_UMIDADE("Alta Umidade"),
     TREMOR_TERRA("Tremor de Terra"),
-    INCENDIO("Incêndio");
+    INCENDIO("Incêndio"),
+    OUTROS("Outros");
 
     private final String descricao;
 

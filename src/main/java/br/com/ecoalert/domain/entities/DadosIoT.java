@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TB_DADOS_IOT")
-@SequenceGenerator(name = "alerta", sequenceName = "SEQ_ALERTA_CLIMATICO", allocationSize = 1)
+@SequenceGenerator(name = "dados", sequenceName = "SEQ_TB_DADOS_IOT", allocationSize = 1)
 public class DadosIoT {
 
     @Id
-    @GeneratedValue(generator = "dados_iot", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "dados", strategy = GenerationType.SEQUENCE)
     @Column(name = "id_dados_iot")
     private Long id;
 
@@ -27,14 +27,9 @@ public class DadosIoT {
     @Column(name = "porcentagemNivel")
     private Double porcentagemNivel;
 
-    @Column(name = "localizacao")
-    private String localizacao;
-
-    @Column(name = "latitude")
-    private String latitude;
-
-    @Column(name = "longitude")
-    private String longitude;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_localizacao")
+    private Localizacao localizacao;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_hora")
@@ -42,25 +37,21 @@ public class DadosIoT {
 
     public DadosIoT() {
     }
-    // Construtor para facilitar instaciamento a partir do DTO
+
     public DadosIoT(DadosIoTRequest dto) {
         this.temperatura = dto.getTemperatura();
         this.umidade = dto.getUmidade();
         this.nivelAguaCm = dto.getNivelAguaCm();
         this.porcentagemNivel = dto.getPorcentagemNivel();
-        this.localizacao = dto.getLocalizacao();
-        this.latitude = dto.getLatitude();
-        this.longitude = dto.getLongitude();
+        this.dataHora = LocalDateTime.now();
     }
 
-    public DadosIoT(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, String localizacao, String latitude, String longitude,LocalDateTime dataHora) {
+    public DadosIoT(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, Localizacao localizacao,LocalDateTime dataHora) {
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.nivelAguaCm = nivelAguaCm;
         this.porcentagemNivel = porcentagemNivel;
         this.localizacao = localizacao;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.dataHora = dataHora;
     }
 
@@ -104,28 +95,12 @@ public class DadosIoT {
         this.porcentagemNivel = porcentagemNivel;
     }
 
-    public String getLocalizacao() {
+    public Localizacao getLocalizacao() {
         return localizacao;
     }
 
-    public void setLocalizacao(String localizacao) {
+    public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
     }
 
     public LocalDateTime getDataHora() {

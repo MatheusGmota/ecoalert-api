@@ -18,83 +18,65 @@ public class DadosIoTRequest {
     @NotNull(message = "O campo porcentagemNivel é obrigatorio.")
     private Double porcentagemNivel;
 
-    @NotBlank(message = "O campo localização é obrigatório.")
-    @Size(min = 2, message = "O campo localização tem que ter mais de 2 caracteres.")
-    private String localizacao;
+    @NotBlank(message = "O estado é obrigatório.")
+    @Size(max = 50, message = "O estado deve ter no máximo 50 caracteres.")
+    private String estado;
 
-    @NotBlank(message = "O campo latitude é obrigatório.")
-    @Size(min = 8, max = 10, message = "O campo localização tem que ter 10 caracteres.")
+    @NotBlank(message = "A cidade é obrigatória.")
+    @Size(max = 100, message = "A cidade deve ter no máximo 100 caracteres.")
+    private String cidade;
+
+    @NotBlank(message = "A latitude é obrigatória.")
+    @Size(max = 20, message = "A latitude deve ter no máximo 20 caracteres.") // Ajuste o tamanho conforme necessário
     private String latitude;
 
-    @NotBlank(message = "O campo longitude é obrigatório.")
-    @Size(min = 8, max = 10, message = "O campo localização tem que ter 10 caracteres.")
+    @NotBlank(message = "A longitude é obrigatória.")
+    @Size(max = 20, message = "A longitude deve ter no máximo 20 caracteres.")
     private String longitude;
 
     public DadosIoTRequest() {}
 
-    public DadosIoTRequest(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel, String localizacao, String latitude, String longitude) {
+    public DadosIoTRequest(Double temperatura, Double umidade, Double nivelAguaCm, Double porcentagemNivel,
+                           String estado, String cidade, String latitude, String longitude) {
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.nivelAguaCm = nivelAguaCm;
         this.porcentagemNivel = porcentagemNivel;
-        this.localizacao = localizacao;
+        this.estado = estado;
+        this.cidade = cidade;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Double getTemperatura() {
-        return temperatura;
-    }
+    public Double getTemperatura() { return temperatura; }
 
-    public Double getUmidade() {
-        return umidade;
-    }
+    public void setTemperatura(Double temperatura) { this.temperatura = temperatura; }
 
-    public Double getNivelAguaCm() {
-        return nivelAguaCm;
-    }
+    public Double getUmidade() { return umidade; }
 
-    public Double getPorcentagemNivel() {
-        return porcentagemNivel;
-    }
+    public void setUmidade(Double umidade) { this.umidade = umidade; }
 
-    public String getLocalizacao() {
-        return localizacao;
-    }
+    public Double getNivelAguaCm() { return nivelAguaCm; }
 
-    public String getLatitude() {
-        return latitude;
-    }
+    public void setNivelAguaCm(Double nivelAguaCm) { this.nivelAguaCm = nivelAguaCm; }
 
-    public String getLongitude() {
-        return longitude;
-    }
+    public Double getPorcentagemNivel() { return porcentagemNivel; }
 
-    public void setTemperatura(Double temperatura) {
-        this.temperatura = temperatura;
-    }
+    public void setPorcentagemNivel(Double porcentagemNivel) { this.porcentagemNivel = porcentagemNivel; }
 
-    public void setUmidade(Double umidade) {
-        this.umidade = umidade;
-    }
+    public String getEstado() { return estado; }
 
-    public void setNivelAguaCm(Double nivelAguaCm) {
-        this.nivelAguaCm = nivelAguaCm;
-    }
+    public void setEstado(String estado) { this.estado = estado; }
 
-    public void setPorcentagemNivel(Double porcentagemNivel) {
-        this.porcentagemNivel = porcentagemNivel;
-    }
+    public String getCidade() { return cidade; }
 
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
-    }
+    public void setCidade(String cidade) { this.cidade = cidade; }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
+    public String getLatitude() { return latitude; }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
+    public void setLatitude(String latitude) { this.latitude = latitude; }
+
+    public String getLongitude() { return longitude; }
+
+    public void setLongitude(String longitude) { this.longitude = longitude; }
 }

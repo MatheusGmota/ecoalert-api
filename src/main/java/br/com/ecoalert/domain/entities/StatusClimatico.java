@@ -23,14 +23,10 @@ public class StatusClimatico {
     @Column(name = "umidade")
     private Double umidade;
 
-    @Column(name = "localizacao")
-    private String localizacao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_localizacao")
+    private Localizacao localizacao;
 
-    @Column(name = "latitude")
-    private String latitude;
-
-    @Column(name = "longitude")
-    private String longitude;
 
     @Column(name = "data_hora")
     private LocalDateTime dataHoraAtualizacao;
@@ -38,13 +34,12 @@ public class StatusClimatico {
     public StatusClimatico() {
     }
 
-    public StatusClimatico(String longitude, String latitude, String localizacao, Double umidade, Double temperatura, String descricao) {
-        this.longitude = longitude;
-        this.latitude = latitude;
+    public StatusClimatico(Localizacao localizacao, Double umidade, Double temperatura, String descricao) {
         this.localizacao = localizacao;
         this.umidade = umidade;
         this.temperatura = temperatura;
         this.descricao = descricao;
+        this.dataHoraAtualizacao = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -79,28 +74,12 @@ public class StatusClimatico {
         this.umidade = umidade;
     }
 
-    public String getLocalizacao() {
+    public Localizacao getLocalizacao() {
         return localizacao;
     }
 
-    public void setLocalizacao(String localizacao) {
+    public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
     }
 
     public LocalDateTime getDataHoraAtualizacao() {

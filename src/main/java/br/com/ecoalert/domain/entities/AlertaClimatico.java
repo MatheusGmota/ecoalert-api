@@ -25,14 +25,9 @@ public class AlertaClimatico {
     @Column(name = "gravidade")
     private Gravidade gravidade;
 
-    @Column(name = "localizacao")
-    private String localizacao;
-
-    @Column(name = "latitude")
-    private String latitude;
-
-    @Column(name = "longitude")
-    private String longitude;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_localizacao")
+    private Localizacao localizacao;
 
     @Column(name = "mensagem")
     private String mensagem;
@@ -50,12 +45,10 @@ public class AlertaClimatico {
 
     public AlertaClimatico() {}
 
-    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, String localizacao, String latitude, String longitude, String mensagem, String recomendacoes) {
+    public AlertaClimatico(TipoEvento tipoEvento, Gravidade gravidade, Localizacao localizacao, String mensagem, String recomendacoes) {
         this.tipoEvento = tipoEvento;
         this.gravidade = gravidade;
         this.localizacao = localizacao;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.mensagem = mensagem;
         this.recomendacoes = recomendacoes;
     }
@@ -84,28 +77,12 @@ public class AlertaClimatico {
         this.gravidade = gravidade;
     }
 
-    public String getLocalizacao() {
+    public Localizacao getLocalizacao() {
         return localizacao;
     }
 
-    public void setLocalizacao(String localizacao) {
+    public void setLocalizacao(Localizacao localizacao) {
         this.localizacao = localizacao;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
     }
 
     public String getMensagem() {

@@ -1,7 +1,7 @@
 package br.com.ecoalert.services;
 
 import br.com.ecoalert.domain.entities.LimiarClimatico;
-import br.com.ecoalert.repositories.LimiarRepository;
+import br.com.ecoalert.repositories.LimiarClimaticoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class LimiarService {
 
     @Autowired
-    private LimiarRepository repository;
+    private LimiarClimaticoRepository repository;
 
     public List<LimiarClimatico> ObterTodos() {
         return repository.findAll();
