@@ -9,16 +9,17 @@ Esse projeto é uma API RESTFul criada para a solução **EcoAlert:**, desenvolv
 ## ⚙ Configuração do Banco de Dados
 No arquivo `application.properties` em `src/main/resources`, configure as credenciais do banco Oracle:
 ```
-spring.datasource.url=${ORCL_URL}
-spring.datasource.username=${ORCL_USERNAME}
-spring.datasource.password=${ORCL_PASSWORD}
+spring.datasource.url=${HOST_URL}
+spring.datasource.username=${USERNAME}
+spring.datasource.password=${PASSWORD}
 ```
 
 ## ⚡ Executando Projeto
 ### Opção 1 - Executando pela classe Main:
-> Execute a classe `GlobalSolutionsApplication`
+> Execute a classe `EcoAlertApplication`
 >
-> ![image](https://github.com/user-attachments/assets/716f9fb0-1f23-4d80-8404-cb8fe2b58201)
+> ![image](https://github.com/user-attachments/assets/6875ff73-06d4-4184-9406-40c944c96876)
+
 
 ### Opção 2 - Executando pelo terminal:
 > Execute os seguintes comandos no terminal:
