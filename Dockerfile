@@ -12,7 +12,7 @@ WORKDIR /app
 RUN adduser --system --group appuser
 USER appuser
 
-ARG JAR_FILE=target/global-solutions-*.jar
+ARG JAR_FILE=target/ecoalert-*.jar
 COPY --from=build /app/${JAR_FILE} app.jar
 
 EXPOSE $PORT
