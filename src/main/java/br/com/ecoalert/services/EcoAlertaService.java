@@ -120,7 +120,7 @@ public class EcoAlertaService {
 
             if (valorSensor <= limiar.getValorMin()) {
                 if (alertaClimaticoRepository.findFirstByLocalizacaoAndTipoEventoAndStatusEvento(localizacao, mapearTipoEvento(false, limiar.getParametroSensor()), StatusEvento.ATIVO).isEmpty()) {
-                    TipoEvento tipoEvento = mapearTipoEvento(true, limiar.getParametroSensor());
+                    TipoEvento tipoEvento = mapearTipoEvento(false, limiar.getParametroSensor());
 
                     AlertaClimatico alertaMin = new AlertaClimatico();
                     alertaMin.setDataHoraEmissao(LocalDateTime.now());
@@ -135,7 +135,7 @@ public class EcoAlertaService {
             }
             else if (valorSensor >= limiar.getValorMax()) {
                 if (alertaClimaticoRepository.findFirstByLocalizacaoAndTipoEventoAndStatusEvento(localizacao, mapearTipoEvento(true, limiar.getParametroSensor()), StatusEvento.ATIVO).isEmpty()) {
-                    TipoEvento tipoEvento = mapearTipoEvento(false, limiar.getParametroSensor());
+                    TipoEvento tipoEvento = mapearTipoEvento(true, limiar.getParametroSensor());
                     AlertaClimatico alertaMax = new AlertaClimatico();
                     alertaMax.setDataHoraEmissao(LocalDateTime.now());
                     alertaMax.setGravidade(Gravidade.ALTA);
