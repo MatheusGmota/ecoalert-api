@@ -48,8 +48,10 @@ spring.datasource.password=${ORCL_PASSWORD}
     "nivelAguaCm": 15,
     "porcentagemNivel": 60,
     "localizacao": "São Paulo",
-    "latitude": -23.55,
-    "longitude": -46.63
+    "estado": "São Paulo",
+    "cidade": "Osasco",
+    "latitude": "-23.55",
+    "longitude": "-46.63"
   }
   ```
 
