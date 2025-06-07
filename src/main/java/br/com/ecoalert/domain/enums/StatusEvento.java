@@ -1,4 +1,4 @@
-package br.com.global_solutions.domain.enums;
+package br.com.ecoalert.domain.enums;
 
 public enum StatusEvento {
     ATIVO("Ativo"),

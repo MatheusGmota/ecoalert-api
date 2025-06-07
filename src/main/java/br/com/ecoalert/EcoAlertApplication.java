@@ -1,4 +1,4 @@
-package br.com.global_solutions;
+package br.com.ecoalert;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package br.com.global_solutions.services;
+package br.com.ecoalert.services;
 
-import br.com.global_solutions.domain.entities.LimiarClimatico;
-import br.com.global_solutions.repositories.LimiarRepository;
+import br.com.ecoalert.domain.entities.LimiarClimatico;
+import br.com.ecoalert.repositories.LimiarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

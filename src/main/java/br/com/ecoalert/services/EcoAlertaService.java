@@ -1,17 +1,17 @@
-package br.com.global_solutions.services;
+package br.com.ecoalert.services;
 
-import br.com.global_solutions.domain.entities.AlertaClimatico;
-import br.com.global_solutions.domain.entities.DadosIoT;
-import br.com.global_solutions.domain.entities.LimiarClimatico;
-import br.com.global_solutions.domain.entities.StatusClimatico;
-import br.com.global_solutions.domain.enums.Gravidade;
-import br.com.global_solutions.domain.enums.StatusEvento;
-import br.com.global_solutions.domain.enums.TipoEvento;
-import br.com.global_solutions.dto.DadosIoTRequest;
-import br.com.global_solutions.repositories.AlertaClimaticoRepository;
-import br.com.global_solutions.repositories.DadosIoTRepository;
-import br.com.global_solutions.repositories.LimiarClimaticoRepository;
-import br.com.global_solutions.repositories.StatusClimaticoRepository;
+import br.com.ecoalert.domain.entities.AlertaClimatico;
+import br.com.ecoalert.domain.entities.DadosIoT;
+import br.com.ecoalert.domain.entities.LimiarClimatico;
+import br.com.ecoalert.domain.entities.StatusClimatico;
+import br.com.ecoalert.domain.enums.Gravidade;
+import br.com.ecoalert.domain.enums.StatusEvento;
+import br.com.ecoalert.domain.enums.TipoEvento;
+import br.com.ecoalert.dto.DadosIoTRequest;
+import br.com.ecoalert.repositories.AlertaClimaticoRepository;
+import br.com.ecoalert.repositories.DadosIoTRepository;
+import br.com.ecoalert.repositories.LimiarClimaticoRepository;
+import br.com.ecoalert.repositories.StatusClimaticoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

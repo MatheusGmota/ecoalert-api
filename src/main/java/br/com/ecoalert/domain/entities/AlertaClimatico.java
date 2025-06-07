@@ -1,8 +1,8 @@
-package br.com.global_solutions.domain.entities;
+package br.com.ecoalert.domain.entities;
 
-import br.com.global_solutions.domain.enums.Gravidade;
-import br.com.global_solutions.domain.enums.StatusEvento;
-import br.com.global_solutions.domain.enums.TipoEvento;
+import br.com.ecoalert.domain.enums.Gravidade;
+import br.com.ecoalert.domain.enums.StatusEvento;
+import br.com.ecoalert.domain.enums.TipoEvento;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

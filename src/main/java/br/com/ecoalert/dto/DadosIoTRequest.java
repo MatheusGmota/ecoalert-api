@@ -1,4 +1,4 @@
-package br.com.global_solutions.dto;
+package br.com.ecoalert.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

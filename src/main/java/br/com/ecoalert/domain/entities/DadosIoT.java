@@ -1,6 +1,6 @@
-package br.com.global_solutions.domain.entities;
+package br.com.ecoalert.domain.entities;
 
-import br.com.global_solutions.dto.DadosIoTRequest;
+import br.com.ecoalert.dto.DadosIoTRequest;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

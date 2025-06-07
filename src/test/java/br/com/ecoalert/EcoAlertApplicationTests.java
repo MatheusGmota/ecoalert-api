@@ -1,10 +1,10 @@
-package br.com.global_solutions;
+package br.com.ecoalert;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GlobalSolutionsApplicationTests {
+class EcoAlertApplicationTests {
 
 	@Test
 	void contextLoads() {

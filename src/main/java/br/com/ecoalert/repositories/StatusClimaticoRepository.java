@@ -1,6 +1,6 @@
-package br.com.global_solutions.repositories;
+package br.com.ecoalert.repositories;
 
-import br.com.global_solutions.domain.entities.StatusClimatico;
+import br.com.ecoalert.domain.entities.StatusClimatico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

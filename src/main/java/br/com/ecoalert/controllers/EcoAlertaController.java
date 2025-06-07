@@ -1,9 +1,9 @@
-package br.com.global_solutions.controllers;
+package br.com.ecoalert.controllers;
 
-import br.com.global_solutions.domain.entities.AlertaClimatico;
-import br.com.global_solutions.domain.entities.StatusClimatico;
-import br.com.global_solutions.dto.DadosIoTRequest;
-import br.com.global_solutions.services.EcoAlertaService;
+import br.com.ecoalert.domain.entities.AlertaClimatico;
+import br.com.ecoalert.domain.entities.StatusClimatico;
+import br.com.ecoalert.dto.DadosIoTRequest;
+import br.com.ecoalert.services.EcoAlertaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

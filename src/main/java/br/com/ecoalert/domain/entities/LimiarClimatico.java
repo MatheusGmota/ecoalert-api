@@ -1,4 +1,4 @@
-package br.com.global_solutions.domain.entities;
+package br.com.ecoalert.domain.entities;
 
 import jakarta.persistence.*;
 
