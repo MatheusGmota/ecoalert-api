@@ -41,7 +41,7 @@ spring.datasource.password=${ORCL_PASSWORD}
 - Rode a aplicação
 - Acesse no navegador `http://localhost:8080/swagger-ui/index.html`
 - Deve aparecer a seguinte página:
-  ![image](https://github.com/user-attachments/assets/2ff377ec-9a00-4b77-a97e-b5c0f2797fe7)
+  ![image](https://github.com/user-attachments/assets/aa3eedae-43a3-4165-91ba-c77e098c610e)
   Nela você pode testar todos os endpoints. 
 
 ## 👨‍💻 Tecnologias Utilizadas
