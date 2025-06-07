@@ -30,17 +30,57 @@ spring.datasource.password=${ORCL_PASSWORD}
 > ```bash
 > java -jar target/ecoalert-0.0.1-SNAPSHOT.jar
 > ```
-
 ## 📡 Endpoints
-### EcoAlertaController
-- `GET api/status-climatico?localizacao={localizacao}` - Obtém o status climático de uma determinada `localizacao`.
-- `GET api/alerta?localizacao={localizacao}` - Obtém um alerta climático de uma determinada `localizacao`.
-- `POST api/dados-climaticos` - Recebe e processa os dados enviados pelos sensores IoT. O corpo da requisição deve incluir um objeto `DadosIoTRequest` com os campos: `temperatura`, `umidade`, `nivelAguaCm`, `porcentagemNivel`, `localizacao`, `latitude` e `longitude`.
+
+### 🌦 EcoAlertaController
+
+- `GET /api/status-climatico?localizacao={localizacao}`
+  Obtém o status climático de uma determinada `localizacao`.
+- `GET /api/alerta?localizacao={localizacao}`
+  Obtém um alerta climático de uma determinada `localizacao`.
+- `POST /api/dados-climaticos`
+  Recebe e processa os dados enviados pelos sensores IoT.
+  Corpo da requisição:
+  ```java
+  {
+    "temperatura": 30.5,
+    "umidade": 70,
+    "nivelAguaCm": 15,
+    "porcentagemNivel": 60,
+    "localizacao": "São Paulo",
+    "latitude": -23.55,
+    "longitude": -46.63
+  }
+  ```
+
+### 📈 LimiarController
+
+- `GET /api/limiar`
+   Retorna todos os limites climáticos cadastrados.
+- `GET /api/limiar/{id}`
+   Retorna os dados de um limite climático específico pelo seu `id`.
+- `POST /api/limiar`
+   Cria um novo limite climático.
+   Corpo da requisição:
+   ```java
+   {
+    "parametroSensor": "temperatura",
+    "valorMin": 10,
+    "valorMax": 35,
+    "msgMin": "Temperatura muito baixa!",
+    "msgMax": "Temperatura muito alta!",
+    "recomendacaoAlerta": "Procure abrigo ou fontes de aquecimento/resfriamento"
+  }
+   ```
+- `PUT /api/limiar/{id}`
+   Atualiza os dados de um limite climático existente pelo `id`.
+- `DELETE /api/limiar/{id}`
+   Remove um limite climático existente.
 
 ## 🔧 Testando Endpoints
 - Rode a aplicação
 - Acesse no navegador `http://localhost:8080/swagger-ui/index.html`
-- Deve aparecer a seguinte página:
+- A interface Swagger será exibida para testar os endpoints visualmente.
   ![image](https://github.com/user-attachments/assets/aa3eedae-43a3-4165-91ba-c77e098c610e)
   Nela você pode testar todos os endpoints. 
 
